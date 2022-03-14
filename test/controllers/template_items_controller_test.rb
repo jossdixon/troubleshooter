@@ -29,6 +29,18 @@ class TemplateItemsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to template_item_url(TemplateItem.last)
   end
 
+  test "cannot create template item with invalid attributes" do
+    assert_no_difference('TemplateItem.count') do
+      post template_items_url, params: {
+        template_item: {
+          order: 1,
+          template_id: @template_item.template_id,
+          action: ''
+        }
+      }
+    end
+  end
+
   test "should show template_item" do
     get template_item_url(@template_item)
     assert_response :success

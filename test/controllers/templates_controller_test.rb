@@ -23,6 +23,12 @@ class TemplatesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to template_url(Template.last)
   end
 
+  test "cannot create template with invalid attributes" do
+    assert_no_difference('Template.count') do
+      post templates_url, params: { template: { name: '' } }
+    end
+  end
+
   test "should show template" do
     get template_url(@template)
     assert_response :success
