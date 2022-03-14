@@ -1,9 +1,11 @@
 one:
+  id: 1
   template_id: 1
   order: 1
   action: 'first test action'
 
 two:
+  id: 2
   template_id: 1
   order: 2
   action: 'second test action'

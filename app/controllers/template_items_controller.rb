@@ -65,6 +65,6 @@ class TemplateItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def template_item_params
-      params.require(:template_item).permit(:template_id, :order)
+      params.require(:template_item).permit(:template_id, :order, :action)
     end
 end

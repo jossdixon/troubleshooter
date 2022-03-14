@@ -24,8 +24,8 @@ class ChecklistItemsControllerTest < ActionDispatch::IntegrationTest
           order: 2,
           done: false,
           resolved_the_issue: false
-          }
         }
+      }
     end
 
     assert_redirected_to checklist_item_url(ChecklistItem.last)
@@ -42,7 +42,15 @@ class ChecklistItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update checklist_item" do
-    patch checklist_item_url(@checklist_item), params: { checklist_item: { checklist_id: @checklist_item.checklist_id, done: true, order: @checklist_item.order, resolved_the_issue: @checklist_item.resolved_the_issue, template_item_id: @checklist_item.template_item_id } }
+    patch checklist_item_url(@checklist_item), params: {
+      checklist_item: {
+        checklist_id: @checklist_item.checklist_id,
+        template_item_id: @checklist_item.template_item_id,
+        resolved_the_issue: @checklist_item.resolved_the_issue,
+        done: true,
+        order: @checklist_item.order
+      }
+    }
     assert_redirected_to checklist_item_url(@checklist_item)
   end
 

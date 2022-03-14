@@ -17,7 +17,13 @@ class TemplateItemsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create template_item" do
     assert_difference('TemplateItem.count') do
-      post template_items_url, params: { template_item: { order: @template_item.order, template_id: @template_item.template_id } }
+      post template_items_url, params: {
+        template_item: {
+          order: @template_item.order,
+          template_id: @template_item.template_id,
+          action: @template_item.action
+        }
+      }
     end
 
     assert_redirected_to template_item_url(TemplateItem.last)
@@ -34,7 +40,13 @@ class TemplateItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update template_item" do
-    patch template_item_url(@template_item), params: { template_item: { order: @template_item.order, template_id: @template_item.template_id } }
+    patch template_item_url(@template_item), params: {
+      template_item: {
+        order: @template_item.order,
+        template_id: @template_item.template_id,
+        action: "update test"
+      }
+    }
     assert_redirected_to template_item_url(@template_item)
   end
 
