@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Checklist Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Checklist</th>
+      <th>Template item</th>
+      <th>Done</th>
+      <th>Resolved the issue</th>
+      <th>Order</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @checklist_items.each do |checklist_item| %>
+      <tr>
+        <td><%= checklist_item.checklist_id %></td>
+        <td><%= checklist_item.template_item_id %></td>
+        <td><%= checklist_item.done %></td>
+        <td><%= checklist_item.resolved_the_issue %></td>
+        <td><%= checklist_item.order %></td>
+        <td><%= link_to 'Show', checklist_item %></td>
+        <td><%= link_to 'Edit', edit_checklist_item_path(checklist_item) %></td>
+        <td><%= link_to 'Destroy', checklist_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Checklist Item', new_checklist_item_path %>

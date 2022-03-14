@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Template:</strong>
+  <%= @template_item.template_id %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @template_item.order %>
+</p>
+
+<%= link_to 'Edit', edit_template_item_path(@template_item) %> |
+<%= link_to 'Back', template_items_path %>
