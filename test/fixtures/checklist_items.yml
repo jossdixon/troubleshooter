@@ -1,0 +1,6 @@
+one:
+  checklist_id: 1
+  template_item_id: 1
+  done: false
+  resolved_the_issue: false
+  order: 1
