@@ -17,7 +17,15 @@ class ChecklistItemsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create checklist_item" do
     assert_difference('ChecklistItem.count') do
-      post checklist_items_url, params: { checklist_item: { checklist_id: @checklist_item.checklist_id, done: @checklist_item.done, order: @checklist_item.order, resolved_the_issue: @checklist_item.resolved_the_issue, template_item_id: @checklist_item.template_item_id } }
+      post checklist_items_url, params: {
+        checklist_item: {
+          checklist_id: 2,
+          template_item_id: 2,
+          done: false,
+          order: 2,
+          resolved_the_issue: false
+          }
+        }
     end
 
     assert_redirected_to checklist_item_url(ChecklistItem.last)

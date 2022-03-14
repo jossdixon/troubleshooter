@@ -1,3 +1,9 @@
 one:
   template_id: 1
   order: 1
+  action: 'first test action'
+
+two:
+  template_id: 1
+  order: 2
+  action: 'second test action'
