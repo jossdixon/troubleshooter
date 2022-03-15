@@ -28,9 +28,8 @@ class TemplateItemsController < ApplicationController
 
     respond_to do |format|
       if @template_item.save
-        format.html { redirect_to template_item_url(@template_item), notice: "Template item was successfully created." }
+        format.html { redirect_to template_path(@template_item.template) }
         format.json { render :show, status: :created, location: @template_item }
-        redirect_to template_path(@template)
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @template_item.errors, status: :unprocessable_entity }
@@ -42,7 +41,7 @@ class TemplateItemsController < ApplicationController
   def update
     respond_to do |format|
       if @template_item.update(template_item_params)
-        format.html { redirect_to template_item_url(@template_item), notice: "Template item was successfully updated." }
+        format.html { redirect_to template(@template_item.template), notice: "Template item was successfully updated." }
         format.json { render :show, status: :ok, location: @template_item }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -1,5 +1,5 @@
 <div class="template-container">
   <h1>Add Action to Template</h1>
-  <%= link_to 'Back', template_items_path, class: 'btn btn-warning' %>
+  <%= link_to 'Back', template_path(@template), class: 'btn btn-warning' %>
   <%= render 'form', template_item: @template_item %>
 </div>

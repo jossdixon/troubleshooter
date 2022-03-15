@@ -11,7 +11,7 @@
           </div>
         <% end %>
         <div class="button-container">
-          <%= link_to 'Action', new_template_item_path(template: @template), class: 'btn btn-primary' %>
+          <%= link_to 'Action', new_template_template_item_path(template_id: @template.id), class: 'btn btn-primary' %>
           <%= link_to 'Edit', edit_template_path(@template), class: 'btn btn-success' %>
           <%= link_to 'Back', templates_path, class: 'btn btn-warning' %>
         </div>
