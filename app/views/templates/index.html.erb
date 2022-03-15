@@ -2,19 +2,20 @@
 <div class="container">
   <div class="template-container">
     <div class="row mb-3">
-      <div class="col-sm">
+      <div class="col">
         <h1>Templates</h1>
+        <div class="col">
+        </div>
       </div>
-      <div class="col-sm">
+      <% @templates.each do |template| %>
+        <div class="card-category">
+          <p><%= link_to template do %>
+              <%= template.name %>, <%= pluralize(template.template_items.count, 'action') %> </p>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="d-flex justify-content-center mt-3">
         <%= link_to 'New Template', new_template_path, class: 'btn btn-primary' %>
       </div>
     </div>
-    <% @templates.each do |template| %>
-      <div class="card-category">
-        <p><%= link_to template do %>
-            <%= template.name %> | <%= pluralize(template.template_items.count, 'item') %> </p>
-        <% end %>
-      </div>
-    <% end %>
   </div>
-</div>
