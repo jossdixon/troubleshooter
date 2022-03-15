@@ -12,6 +12,7 @@ class TemplateItemsController < ApplicationController
 
   # GET /template_items/new
   def new
+    @template = Template.find(params[:template_id])
     @template_item = TemplateItem.new
   end
 
