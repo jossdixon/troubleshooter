@@ -1,8 +1,19 @@
 Rails.application.routes.draw do
-  resources :checklist_items
-  resources :checklists
-  resources :template_items
-  resources :templates
   root to: 'pages#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :templates do
+    resources :template_items, only: [:new, :create, :index]
+    resources :checklists, only: [:new, :create]
+  end
+
+  resources :template_items do
+    resources :checklist_items, only: [:new, :create]
+  end
+
+  resources :template_items, only: [:destroy]
+
+  resources :checklists do
+    resources :checklist_items, only: [:show, :index]
+  end
+
 end
