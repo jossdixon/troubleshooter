@@ -22,11 +22,14 @@ class TemplateItemsController < ApplicationController
   # POST /template_items or /template_items.json
   def create
     @template_item = TemplateItem.new(template_item_params)
+    @template = Template.find(params[:template_id])
+    @template_item.template = @template
 
     respond_to do |format|
       if @template_item.save
         format.html { redirect_to template_item_url(@template_item), notice: "Template item was successfully created." }
         format.json { render :show, status: :created, location: @template_item }
+        redirect_to template_path(@template)
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @template_item.errors, status: :unprocessable_entity }
