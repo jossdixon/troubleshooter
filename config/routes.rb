@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
+  root to: 'templates#index'
 
   resources :templates do
     resources :template_items, only: [:new, :create, :index]
