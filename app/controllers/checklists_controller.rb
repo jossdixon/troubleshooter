@@ -69,6 +69,6 @@ class ChecklistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def checklist_params
-      params.require(:checklist).permit(:template_id)
+      params.require(:checklist).permit(:template_id, :resolved_at, checklist_items_attribute: [:template_item_id, :order])
     end
 end
