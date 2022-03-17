@@ -12,16 +12,20 @@ class ChecklistsController < ApplicationController
 
   # GET /checklists/new
   def new
+    @template = Template.find(params[:template_id])
     @checklist = Checklist.new
   end
 
   # GET /checklists/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /checklists or /checklists.json
   def create
     @checklist = Checklist.new(checklist_params)
+    @template = Template.find(params[:template_id])
+    @checklist.template = @template
+    @checklist.template.template_items.checklist_items.build
 
     respond_to do |format|
       if @checklist.save
@@ -65,6 +69,6 @@ class ChecklistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def checklist_params
-      params.require(:checklist).permit(:template_id, :resolved_at)
+      params.require(:checklist).permit(:template_id)
     end
 end
