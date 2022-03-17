@@ -25,7 +25,7 @@ class ChecklistsController < ApplicationController
     @checklist = Checklist.new(checklist_params)
     @template = Template.find(params[:template_id])
     @checklist.template = @template
-    @checklist.template.template_items.checklist_items.build
+    # @checklist.template.template_items.checklist_items.build
 
     respond_to do |format|
       if @checklist.save
@@ -69,6 +69,6 @@ class ChecklistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def checklist_params
-      params.require(:checklist).permit(:template_id, :resolved_at, checklist_items_attribute: [:template_item_id, :order])
+      params.require(:checklist).permit(:template_id, :resolved_at)
     end
 end
