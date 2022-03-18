@@ -2,8 +2,8 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
   <div class="form-inputs">
-    <%# <%= f.association :template %>
-    <%# <%= f.input :resolved_at %>
+    <%= f.association :template, as: :hidden %>
+    <%= f.hidden_field :resolved_at %>
   </div>
   <div class="form-actions">
     <%= f.button :submit %>
