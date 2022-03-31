@@ -25,7 +25,11 @@ class ChecklistsController < ApplicationController
     @checklist = Checklist.new(checklist_params)
     @template = Template.find(params[:template_id])
     @checklist.template = @template
-    # @checklist.template.template_items.checklist_items.build
+    # @checklist.template.template_items.checklist_items
+
+    @checklist.template.template_items.each do |item|
+      @checklist.checklist_items.build(done: false, resolved_the_issue: false, order: item.order)
+    end
 
     respond_to do |format|
       if @checklist.save
