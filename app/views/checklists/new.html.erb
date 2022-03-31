@@ -1,5 +1,16 @@
 <div class="template-container">
   <h1>New Checklist</h1>
-  <%= render 'form', checklist: @checklist %>
+  <%# <%= render 'form', checklist: @checklist %>
+  <%= simple_form_for [ @template, @checklist ] do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="form-inputs">
+      <%# <%= f.association :template, as: :hidden %>
+      <%= f.hidden_field :resolved_at %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
   <%= link_to 'Back', checklists_path %>
 </div>

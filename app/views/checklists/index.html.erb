@@ -10,7 +10,7 @@
       <% @checklists.each do |checklist| %>
         <div class="card-category">
           <p><%= link_to checklist do %>
-              <%= checklist.name %>, <%= pluralize(checklist.checklist_items.count, 'action') %> </p>
+              <%= checklist.template.name %>, <%= pluralize(checklist.checklist_items.count, 'action') %> </p>
           <% end %>
         </div>
       <% end %>
